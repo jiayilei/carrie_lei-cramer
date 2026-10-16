@@ -1,0 +1,198 @@
+/* ---------- Theme variables: change colors here ---------- */
+:root {
+  --bg: #1e1e2a;
+  --text: #e8e8ee;
+  --accent: #2ea8e6;
+  --muted: #b9b9c6;
+  --sidebar-width: 270px;
+  --gap: 70px;
+  --max-width: 1000px;
+}
+
+/* ---------- Base ---------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  background: var(--bg);
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: "Crimson Pro", Georgia, "Times New Roman", serif;
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+a:hover,
+a:focus-visible {
+  text-decoration: underline;
+}
+
+h1,
+h2 {
+  margin: 0;
+  color: var(--accent);
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+h1 {
+  font-size: 1.9rem;
+}
+
+h2 {
+  font-size: 1.9rem;
+  margin-bottom: 1.1rem;
+}
+
+/* ---------- Two-column layout, centered on the page ---------- */
+.wrapper {
+  display: flex;
+  align-items: flex-start;        /* columns start at the top */
+  gap: var(--gap);
+  max-width: var(--max-width);
+  margin: 0 auto;                 /* centers the whole block horizontally */
+  padding: 48px 24px;
+}
+
+/* Left column: fixed width, content centered inside it */
+.sidebar {
+  flex: 0 0 var(--sidebar-width);
+  text-align: center;
+}
+
+/* Right column: takes the remaining space */
+.content {
+  flex: 1 1 0;
+  min-width: 0;                   /* lets long text wrap instead of overflowing */
+}
+
+/* ---------- Sidebar ---------- */
+.avatar {
+  display: block;
+  width: 104px;
+  height: 104px;
+  margin: 0 auto 22px;
+  border-radius: 50%;             /* circular crop */
+  object-fit: cover;              /* avoids stretching non-square photos */
+}
+
+.role {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  margin: 22px 0 0;
+}
+
+.role .title {
+  font-size: 1.15rem;
+}
+
+.role .company {
+  font-size: 1rem;
+}
+
+.role .email {
+  margin-top: 2px;
+  color: var(--text);
+  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  font-size: 0.8rem;
+}
+
+/* ---------- Icon links ---------- */
+.icon-links {
+  display: flex;
+  justify-content: center;
+  gap: 22px;
+  margin: 34px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.icon-links a {
+  display: inline-flex;
+  align-items: center;
+}
+
+.icon-links svg {
+  fill: var(--accent);
+  transition: opacity 0.15s;
+}
+
+/* The CV icon is drawn with outlines instead of fills */
+.icon-links svg.stroke {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.icon-links a:hover svg,
+.icon-links a:focus-visible svg {
+  opacity: 0.7;
+}
+
+/* Hide text labels visually but keep them for screen readers */
+.icon-links span {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+/* ---------- Content ---------- */
+.content section {
+  margin-bottom: 2.2rem;
+}
+
+.content p {
+  margin: 0 0 1.2rem;
+}
+
+.content ul {
+  padding-left: 1.2rem;
+}
+
+.content li {
+  margin-bottom: 0.6rem;
+}
+
+footer {
+  margin-top: 3rem;
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+footer p {
+  margin: 0;
+}
+
+
+
+/* ---------- Mobile: stack into one column ---------- */
+@media (max-width: 760px) {
+  .wrapper {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 36px;
+    padding: 36px 20px;
+  }
+
+  .sidebar {
+    flex-basis: auto;
+  }
+}
